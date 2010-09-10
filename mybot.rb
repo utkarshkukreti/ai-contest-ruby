@@ -1,4 +1,4 @@
-require './planetwars.rb'
+require File.expand_path(File.join(File.dirname(__FILE__), 'planetwars'))
 
 def do_turn(pw)
   # (1) don't do anything if we have a fleet in flight
