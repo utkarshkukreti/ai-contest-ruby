@@ -76,6 +76,10 @@ class PlanetWars
   def enemy_fleets
     @fleets.select {|fleet| fleet.owner > 1 }
   end
+  
+  def enemy_fleets_to_me
+    @fleets.select {|fleet| fleet.owner > 1 and @planets[fleet.destination_planet].owner == 1}
+  end
 
   def to_s
     s = []
