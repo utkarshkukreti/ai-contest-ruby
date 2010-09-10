@@ -88,10 +88,12 @@ class PlanetWars
     return s.join("\n")
   end
 
-  def distance(source_id, destination_id)
-    source = get_planet(source_id)
-    destination = get_planet(destination_id)
+  def distance(source, destination)
     Math::hypot( (source.x - destination.x), (source.y - destination.y) )
+  end
+
+  def travel_time(source, destination)
+    distance(source, destination).ceil
   end
 
   def issue_order(source, destination, num_ships)
@@ -101,7 +103,6 @@ class PlanetWars
 
   def is_alive(player_id)
     ((@planets.select{|p| p.owner == player_id }).length > 0) || ((@fleets.select{|p| p.owner == player_id }).length > 0)
-    end
   end
 
   def parse_game_state(s)
